@@ -76,7 +76,7 @@ public class CalculatorTest
                 LogLevel.Error,
                 It.IsAny<EventId>(),
                 It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("LogError: Format shoud be numeric.")),
-                It.IsAny<Exception>(),
+                It.IsAny<FormatException>(),
                 It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)),
             Times.Once);
         Assert.That(ex.Message, Is.EqualTo("Invalid input. Please enter numeric values."));
@@ -91,7 +91,7 @@ public class CalculatorTest
                 LogLevel.Error,
                 It.IsAny<EventId>(),
                 It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("LogError: Specified Operation is not Supported.")),
-                It.IsAny<Exception>(),
+                It.IsAny<NotImplementedException>(),
                 It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)),
             Times.Once);
         Assert.That(ex.Message,Is.EqualTo("An error occurred: The specified operation is not supported."));
