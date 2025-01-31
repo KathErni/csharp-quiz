@@ -1,9 +1,11 @@
-﻿namespace CalculatorApp;
+﻿using Microsoft.Extensions.Logging;
+namespace CalculatorApp;
 
 class Program
 {
     static void Main(string[] args)
     {
+        var logger = LoggerProvider.CreateLogger<Calculator>();
         //Try the given codes if it'll throw an exception during user input
             try
             {
@@ -16,7 +18,7 @@ class Program
                 Console.WriteLine("Enter the operation (add, subtract, multiply, divide):");
                 string operation = Console.ReadLine()?.ToLower() ?? string.Empty;
 
-            var calculator = new Calculator();
+            var calculator = new Calculator(logger);
 
                 double result = calculator.PerformOperation(num1, num2, operation);
                 Console.WriteLine($"The result is: {result}");
