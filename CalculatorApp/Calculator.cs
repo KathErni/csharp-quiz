@@ -4,6 +4,7 @@ namespace CalculatorApp;
 
 public class Calculator
 {
+    //Implement the PerformOperation method
     public double PerformOperation(double num1, double num2, string operation)
     {
       
@@ -19,17 +20,24 @@ public class Calculator
             case "divide":
                 if (num2 == 0)
                 {
-                    throw new DivideByZeroException($"Cannot divide by Zero");
+                    throw new DivideByZeroException($"Cannot divide by Zero.");
                 }
 
                     return num1 / num2;
-            }
+            default:   
+                throw new NotImplementedException($"An error occurred: The specified operation is not supported.");
+        }
         
         
-        //Implement the PerformOperation method
+    //For Test: Implement String to Double Method since Parameter can only accept (double, double , string)
        
-
-    
-        throw new NotImplementedException($"An error occurred: The specified operation is not supported.");
+    }
+    public double ParseStringToDouble(string input)
+    {
+        if (!double.TryParse(input, out double result))
+        {
+            throw new FormatException($"Invalid input. Please enter numeric values.");
+        }
+        return result; 
     }
 }
