@@ -3,6 +3,7 @@ namespace CalculatorApp;
 
 class Program
 {
+
     static void Main(string[] args)
     {
         var logger = LoggerProvider.CreateLogger<Calculator>();
@@ -26,9 +27,10 @@ class Program
             }
 
             //Catch an error that is in the wrong format
-            catch (FormatException e )
+            catch (FormatException )
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Invalid input. Please enter numeric values.");
+            logger.LogError("LogError: Format shoud be numeric.");
             }
             //Catch an error that when a number is divided by zero
             catch (DivideByZeroException e)

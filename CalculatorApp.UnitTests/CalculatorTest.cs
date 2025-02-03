@@ -9,7 +9,7 @@ namespace CalculatorApp.UnitTests;
 public class CalculatorTest
 
 {
-    
+
     private Calculator _calculator { get; set; } = null;
     private ILogger<Calculator> _logger;
     //Setup
@@ -24,8 +24,8 @@ public class CalculatorTest
 
     //Successful Executions
     public void Add_Numbers()
-    { 
-        var result = _calculator.PerformOperation(2,3,"add");
+    {
+        var result = _calculator.PerformOperation(2, 3, "add");
         Assert.AreEqual(5, result);
     }
     [Test]
@@ -37,13 +37,13 @@ public class CalculatorTest
     [Test]
     public void Multiply_Numbers()
     {
-        var result = _calculator.PerformOperation(15, 4, "multiply"); 
+        var result = _calculator.PerformOperation(15, 4, "multiply");
         Assert.AreEqual(60, result);
     }
     [Test]
     public void Divide_Numbers()
     {
-        var result = _calculator.PerformOperation(30,15, "divide");
+        var result = _calculator.PerformOperation(30, 15, "divide");
         Assert.AreEqual(2, result);
 
     }
@@ -64,12 +64,12 @@ public class CalculatorTest
 
         Assert.That(ex.Message, Is.EqualTo("Cannot divide by Zero."));
 
-      
+
     }
     [Test]
     public void InputDifferentType_FormatException()
     {
-        var mockLogger_Input= Mock.Get(_logger);
+        var mockLogger_Input = Mock.Get(_logger);
         var ex = Assert.Throws<FormatException>(() => _calculator.ParseStringToDouble("abc"));
         mockLogger_Input.Verify(
             x => x.Log(
@@ -94,7 +94,7 @@ public class CalculatorTest
                 It.IsAny<NotImplementedException>(),
                 It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)),
             Times.Once);
-        Assert.That(ex.Message,Is.EqualTo("An error occurred: The specified operation is not supported."));
+        Assert.That(ex.Message, Is.EqualTo("An error occurred: The specified operation is not supported."));
     }
-
+  
 }
